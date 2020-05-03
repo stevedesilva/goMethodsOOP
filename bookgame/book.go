@@ -1,21 +1,24 @@
 package bookgame
 
-import "fmt"
+import (
+	"fmt"
+	m "goMethodsOOP/money"
+)
 
 // receiver name should be consistent with previous receiver name b for Book
 
 // Book struct
 type Book struct {
 	Title string
-	Price float64
+	Price m.Money
 }
 
 // Print func
 func (b *Book) Print() {
-	fmt.Printf("%-15s: $%.2f\n", b.Title, b.Price)
+	fmt.Printf("%-15s: %s\n", b.Title, b.Price.ToString())
 }
 
 // Discount price
 func (b *Book) Discount(ratio float64) {
-	b.Price *= (1 - ratio)
+	b.Price *= m.Money(1 - ratio)
 }
