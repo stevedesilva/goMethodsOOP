@@ -34,7 +34,55 @@ func (l List) Print() {
 		return
 	}
 	// - print
+	fmt.Println("Print ....")
 	for _, v := range l {
 		v.Print()
+	}
+}
+
+// // Discount func
+// func (l List) Discount(discount float64) {
+// 	fmt.Printf("Discounting by %v  \n.", discount) // .*bookgame.Game game? true (&{gta 60})
+
+// 	for _, it := range l {
+// 		// similar to instanceOf in java
+// 		// g, ok := it.(*g.Game)
+// 		// fmt.Printf("%T game? %v (%v) \n.", it, ok, g) // .*bookgame.Game game? true (&{gta 60})
+
+// 		// if ok {
+// 		// 	// fmt.Printf("Discounting %T game? %v (%v) \n.", it, ok, g) // .*bookgame.Game game? true (&{gta 60})
+// 		// 	g.Discount(discount)
+// 		// }
+
+// 		// check if item has Discount method
+// 		// g, ok := it.(interface{ Discount(discount float64) })
+// 		g, ok := it.(interface{ Discount(float64) })
+// 		if !ok {
+// 			continue
+// 		}
+// 		g.Discount(discount)
+
+// 	}
+// }
+
+// Discount func
+func (l List) Discount(discount float64) {
+	fmt.Printf("Discounting by %v  \n.", discount) // .*bookgame.Game game? true (&{gta 60})
+
+	// can declare interface a func level
+	type discounter interface {
+		Discount(float64)
+	}
+	// "it" here is printer
+	for _, it := range l {
+		// here the type assertion doesn't extract the dynamic value.
+		// instead it converts the Printer to a discounter interface value,
+		// but only if the value has a discount method
+		// "it" is now discounter
+		if it, ok := it.(discounter); ok {
+			fmt.Printf("discounting (%v) \n.", it)
+			it.Discount(discount)
+		}
+
 	}
 }
