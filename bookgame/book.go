@@ -22,10 +22,10 @@ func (b *Book) Print() {
 	fmt.Printf("%-15s: %s - (%v)\n", b.Title, b.Price.ToString(), p)
 }
 
-// Discount price
-func (b *Book) Discount(ratio float64) {
-	b.Price *= m.Money(1 - ratio)
-}
+// // Discount price
+// func (b *Book) Discount(ratio float64) {
+// 	b.Price *= m.Money(1 - ratio)
+// }
 
 func format(v interface{}) string {
 	var t int
