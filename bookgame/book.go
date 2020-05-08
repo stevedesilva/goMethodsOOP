@@ -37,8 +37,9 @@ func format(v interface{}) string {
 	default:
 		return "unknown" // v stays as an empty interface
 	}
-
+	// Mon Jan 2 15:04:05 -0700 MST 2006
+	const layout = "02/01/2006"
 	u := time.Unix(int64(t), 0)
-	return u.String()
+	return u.Format(layout)
 
 }
