@@ -27,28 +27,15 @@ func (b *Book) Discount(ratio float64) {
 	b.Price *= m.Money(1 - ratio)
 }
 
-func format(x interface{}) string {
-
-	switch x.(type) {
-	case int:
-		fmt.Print("int -> ")
-	case string:
-		fmt.Print("string -> ")
-	default:
-		fmt.Print("nil -> ")
-		return "unknown"
-	}
-	
-	// &bookgame.Book{Title: "Astrix", Price: 40, Published: 234244979},
+func format(v interface{}) string {
 	var t int
-
-	if i, ok := x.(int); ok {
-		t = i
-	}
-
-	// &bookgame.Book{Title: "Tintin", Price: 40, Published: "123456959"},
-	if i, ok := x.(string); ok {
-		t, _ = strconv.Atoi(i)
+	switch v := v.(type) { // v starts as an empty interface
+	case int:
+		t = v // v becomes int var
+	case string:
+		t, _ = strconv.Atoi(v) // v becomes string var
+	default:
+		return "unknown" // v stays as an empty interface
 	}
 
 	u := time.Unix(int64(t), 0)
