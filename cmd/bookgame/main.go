@@ -5,9 +5,9 @@ import bg "goMethodsOOP/bookgame"
 // https://circleci.com/gh/stevedesilva/workflows/goMethodsOOP
 func main() {
 
-	mobyDick := bg.Book{Title: "Moby Dick", Price: 10}
-	doom := bg.Game{Title: "Doom", Price: 40}
-	gta := bg.Game{Title: "gta", Price: 60}
+	mobyDick := &bg.Game{Product: bg.Product{Title: "mobyDick", Price: 10}}
+	doom := &bg.Game{Product: bg.Product{Title: "Doom", Price: 10}}
+	gta := &bg.Game{Product: bg.Product{Title: "GTA", Price: 90}}
 
 	mobyDick.Print()
 	// behind the scenes = (&gta).Discount(0.5)

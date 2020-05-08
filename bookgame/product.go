@@ -2,7 +2,6 @@ package bookgame
 
 import (
 	"fmt"
-
 	m "goMethodsOOP/money"
 )
 
