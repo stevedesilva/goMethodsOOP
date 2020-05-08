@@ -1,1 +1,3 @@
 # goMethodsOOP
+
+Collection of exercises
