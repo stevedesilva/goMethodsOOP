@@ -17,3 +17,8 @@ type Puzzle struct {
 func (p *Puzzle) Print() {
 	fmt.Printf("%-15s: %s\n", p.Title, p.Price.ToString())
 }
+
+// Discount price
+func (p *Puzzle) Discount(ratio float64) {
+	p.Price *= m.Money(1 - ratio)
+}
