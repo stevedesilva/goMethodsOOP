@@ -6,11 +6,12 @@ import (
 
 // List type
 // type List []*g.Game
-type List []Printer
+type List []Item
 
-// Printer inf
-type Printer interface {
+// Item inf
+type Item interface {
 	Print()
+	Discount(float64)
 }
 
 // Listprint functionality
@@ -40,6 +41,16 @@ func (l List) Print() {
 	}
 }
 
+// Discount func
+func (l List) Discount(discount float64) {
+	fmt.Printf("Discounting by %v  \n.", discount) // .*bookgame.Game game? true (&{gta 60})
+
+	// "it" here is Item
+	for _, it := range l {
+		it.Discount(discount)
+	}
+}
+
 // // Discount func
 // func (l List) Discount(discount float64) {
 // 	fmt.Printf("Discounting by %v  \n.", discount) // .*bookgame.Game game? true (&{gta 60})
@@ -65,24 +76,24 @@ func (l List) Print() {
 // 	}
 // }
 
-// Discount func
-func (l List) Discount(discount float64) {
-	fmt.Printf("Discounting by %v  \n.", discount) // .*bookgame.Game game? true (&{gta 60})
+// // Discount func
+// func (l List) Discount(discount float64) {
+// 	fmt.Printf("Discounting by %v  \n.", discount) // .*bookgame.Game game? true (&{gta 60})
 
-	// can declare interface a func level
-	type discounter interface {
-		Discount(float64)
-	}
-	// "it" here is printer
-	for _, it := range l {
-		// here the type assertion doesn't extract the dynamic value.
-		// instead it converts the Printer to a discounter interface value,
-		// but only if the value has a discount method
-		// "it" is now discounter
-		if it, ok := it.(discounter); ok {
-			fmt.Printf("discounting (%v) \n.", it)
-			it.Discount(discount)
-		}
+// 	// can declare interface a func level
+// 	type discounter interface {
+// 		Discount(float64)
+// 	}
+// 	// "it" here is Item
+// 	for _, it := range l {
+// 		// here the type assertion doesn't extract the dynamic value.
+// 		// instead it converts the Item to a discounter interface value,
+// 		// but only if the value has a discount method
+// 		// "it" is now discounter
+// 		if it, ok := it.(discounter); ok {
+// 			fmt.Printf("discounting (%v) \n.", it)
+// 			it.Discount(discount)
+// 		}
 
-	}
-}
+// 	}
+// }

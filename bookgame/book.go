@@ -2,7 +2,6 @@ package bookgame
 
 import (
 	"fmt"
-	m "goMethodsOOP/money"
 	"strconv"
 	"time"
 )
@@ -11,20 +10,15 @@ import (
 
 // Book struct
 type Book struct {
-	Title     string
-	Price     m.Money
+	Product
 	Published interface{}
 }
 
 // Print func
 func (b *Book) Print() {
+	b.Product.Print()
 	p := format(b.Published)
-	fmt.Printf("%-15s: %s - (%v)\n", b.Title, b.Price.ToString(), p)
-}
-
-// Discount price
-func (b *Book) Discount(ratio float64) {
-	b.Price *= m.Money(1 - ratio)
+	fmt.Printf("\t - (%v) \n", p)
 }
 
 func format(v interface{}) string {
