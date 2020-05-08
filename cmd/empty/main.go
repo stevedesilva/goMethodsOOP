@@ -28,7 +28,11 @@ func emptyTwo() {
 	var many []interface{}
 	// many = nums
 
-	// 
+	/*
+		'many' is a slice of interface{} values
+		So 'many' cannot store any type of value (i.e. since it's type is slice of values).
+		Only an interface{} value can store any type of value
+	*/
 	for _, v := range nums {
 		many = append(many, v)
 	}

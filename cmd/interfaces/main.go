@@ -6,27 +6,16 @@ import (
 )
 
 func main() {
-	mobyDick := bookgame.Book{Title: "Moby Dick", Price: 20}
-	doom := bookgame.Game{Title: "Doom", Price: 40}
-	gta := bookgame.Game{Title: "gta", Price: 60}
-	risk := bookgame.Puzzle{Title: "risk", Price: 10}
-	yoda := bookgame.Toy{Title: "yoda", Price: 310}
-
-	var store l.List
-	store = append(store, &doom, &gta, &mobyDick, &risk, &yoda)
-
-	store.Print()
-
-	// fmt.Println(store[0] == &doom)
-	// fmt.Println(store[3] == &risk)
-
-	// var p l.Printer
-
-	// p = &doom
-	// p = &risk
-	// fmt.Println(p)
+	store := l.List{
+		&bookgame.Book{Title: "Moby Dick", Price: 20},
+		&bookgame.Book{Title: "Astrix", Price: 40, Published: 234244979},
+		&bookgame.Book{Title: "Tintin", Price: 40, Published: "123456959"},
+		&bookgame.Game{Title: "Doom", Price: 40},
+		&bookgame.Game{Title: "gta", Price: 60},
+		&bookgame.Puzzle{Title: "risk", Price: 10},
+		&bookgame.Toy{Title: "yoda", Price: 310},
+	}
 
 	store.Discount(.5)
 	store.Print()
-
 }
