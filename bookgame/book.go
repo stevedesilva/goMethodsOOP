@@ -28,11 +28,17 @@ func (b *Book) Discount(ratio float64) {
 }
 
 func format(x interface{}) string {
-	// &bookgame.Book{Title: "Moby Dick", Price: 20},
-	if x == nil {
-		return "unknown"
 
+	switch x.(type) {
+	case int:
+		fmt.Print("int -> ")
+	case string:
+		fmt.Print("string -> ")
+	default:
+		fmt.Print("nil -> ")
+		return "unknown"
 	}
+	
 	// &bookgame.Book{Title: "Astrix", Price: 40, Published: 234244979},
 	var t int
 
