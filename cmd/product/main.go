@@ -4,7 +4,7 @@ package main
 import (
 	"fmt"
 	p "goMethodsOOP/product"
-	m "goMethodsOOP/money"
+	"sort"
 )
 
 func main() {
@@ -14,8 +14,18 @@ func main() {
 		&p.Product{Title: "Tintin", Price: 40, Released: p.ToTimestamp("123456959")},
 	}
 	l.Discount(.5)
+	// var pocket m.Money = 10
+	// fmt.Println("I have ", pocket)
+
+	sort.Sort(l)
+	sort.Sort(sort.Reverse(l))
 	fmt.Print(l)
-	var pocket m.Money = 10
-	fmt.Println("I have ", pocket)
+	
+	sort.Sort(p.ByReleaseDate(l))
+	fmt.Print(l)
+
+	sort.Sort(sort.Reverse(p.ByReleaseDate(l)))
+	fmt.Print(l)
+	
 
 }
