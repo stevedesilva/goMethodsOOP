@@ -16,11 +16,14 @@ func (l List) String() string {
 	}
 
 	// - print
+<<<<<<< HEAD
+=======
 	var str strings.Builder
 	for _, p := range l {
 		str.WriteString("* ")
 		str.WriteString(p.String())
 		str.WriteRune('\n')
+>>>>>>> master
 	}
 	return str.String()
 }

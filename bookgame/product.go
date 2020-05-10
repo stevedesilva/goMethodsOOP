@@ -13,7 +13,7 @@ type Product struct {
 
 // Print func
 func (p *Product) Print() {
-	fmt.Printf("%-15s: %s\n", p.Title, p.Price.ToString())
+	fmt.Printf("%-15s: %s\n", p.Title, p.Price)
 }
 
 // Discount price

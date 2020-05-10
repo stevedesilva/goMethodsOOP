@@ -8,6 +8,6 @@ import "fmt"
 type Money float64
 
 // ToString func
-func (m Money) ToString() string {
+func (m Money) String() string {
 	return fmt.Sprintf("$%.2f", m)
 }
