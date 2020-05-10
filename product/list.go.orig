@@ -16,13 +16,18 @@ func (l List) String() string {
 	}
 
 	// - print
+	var str strings.Builder
+	for _, p := range l {
+		str.WriteString("* ")
+		str.WriteString(p.String())
+		str.WriteRune('\n')
 	}
 	return str.String()
 }
 
 // Discount func
 func (l List) Discount(discount float64) {
-	fmt.Printf("Discounting by %v  \n.", discount)
+	fmt.Printf("Discounting by %v  \n", discount)
 
 	// "it" here is Item
 	for _, p := range l {
