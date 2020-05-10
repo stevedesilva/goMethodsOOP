@@ -2,28 +2,32 @@ package product
 
 import (
 	"fmt"
+	"strings"
 )
 
 // List type
 type List []*Product
 
 // Print func
-func (l List) Print() {
+func (l List) String() string {
 
 	if len(l) == 0 {
-		fmt.Println("No games available to print.")
-		return
+		return "Sorry, We're waiting for a delivery.\n"
 	}
+
 	// - print
-	fmt.Println("Print ....")
-	for _, v := range l {
-		v.Print()
+	var str strings.Builder
+	for _, p := range l {
+		str.WriteString("* ")
+		str.WriteString(p.String())
+		str.WriteRune('\n')
 	}
+	return str.String()
 }
 
 // Discount func
 func (l List) Discount(discount float64) {
-	fmt.Printf("Discounting by %v  \n.", discount)
+	fmt.Printf("Discounting by %v  \n", discount)
 
 	// "it" here is Item
 	for _, p := range l {

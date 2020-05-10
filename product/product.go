@@ -3,7 +3,6 @@ package product
 import (
 	"fmt"
 	m "goMethodsOOP/money"
-
 )
 
 // Product struct
@@ -14,8 +13,8 @@ type Product struct {
 }
 
 // Print func
-func (p *Product) Print() {
-	fmt.Printf("%s: %s (%s)\n", p.Title, p.Price.ToString(), p.Released.String())
+func (p *Product) String() string {
+	return fmt.Sprintf("%s: %s (%s)", p.Title, p.Price, p.Released)
 }
 
 // Discount price
